@@ -46,6 +46,8 @@ Plot 2: firstly we filter the power outage happens time, it's in the morning, in
 
 ### Bivariate Analysis
 
+A bivariate analysis we performed was on the residential sector monthly electricity price versus their electricity consumption. We created a scatter plot where the residential sector monthly electricity price was on the x-axis, finding out that there seems to be an interesting trend that for most states, the higher the monthly electricity price, the more consumption.
+
 Plot 1: Here is s scatter plot using 'RES.PRICE column as x-axis and 'RES.SALSES' column as y-axis, we can see different associationns between prices and sales for different states.
 
 <iframe src="assets/bivariate_plot1.html" width=800 height=600 frameBorder=0></iframe>
@@ -70,13 +72,15 @@ This pivot table has the 'CAUSE.CATEGORY' as index, 'MONTH' as columns, performs
 
 ## Assessment of Missingness
 
-Permutation test: The missingness of CUSTOMERS.AFFECTED depends on OUTAGE.DURATION.
+From initial observation, we noticed that the OUTAGE.DURATION is either significantly shorter or longer when the CUSTOMERS.AFFECTED is missing. So we speculate that the extreme cases of OUTAGE.DURATION can leads to the missingness of CUSTOMERS.AFFECTED, such that CUSTOMERS.AFFECTED is NMAR.
 
-We use mean difference between missing and not missing as our test statistic.
+We conduct permutation test to see if the missingness of CUSTOMERS.AFFECTED depends on OUTAGE.DURATION.
 
 Null Hypothesis: The mean outage duration of missing CUSTOMERS.AFFECTED equals the mean outage duration of not missing CUSTOMERS.AFFECTED.
 
 Alternative Hypothesis: The mean outage duration of missing CUSTOMERS.AFFECTED is smaller than the mean outage duration of not missing CUSTOMERS.AFFECTED.
+
+We use mean difference between missing and not missing as our test statistic.
 
 <iframe src="assets/missingness_plot1.html" width=800 height=600 frameBorder=0></iframe>
 
