@@ -58,15 +58,15 @@ Plot 2: a scatter plot using 'CUSTOMERS.AFFECTED' column as x-axis, 'OUTAGE.DURA
 
 ### Interesting Aggregates
 
-This pivot table has the 'CAUSE.CATEGORY' as index, 'MONTH' as columns, performs the mean of 'RES.PRICE' on different cauing event in different month by using aggfunction mean.
+This pivot table has the 'CAUSE.CATEGORY' as index, 'MONTH' as columns, performs the mean of 'OUTAGE.DURATION' on different cauing event in different month by using aggfunction mean.
 
-| CAUSE.CATEGORY        |        1 |       2 |       3 |        4 |       5 |       6 |       7 |       8 |       9 |       10 |      11 |     12 |
-|:----------------------|---------:|--------:|--------:|---------:|--------:|--------:|--------:|--------:|--------:|---------:|--------:|-------:|
-| equipment failure     |  14.52   | 12.4125 | 10.3775 |   9.92   | 12.6017 | 11.3814 | 12.2233 | 10.9025 | 10.805  | nan      |  11.24  | 12.465 |
-| fuel supply emergency |  12.3075 | 16.2156 | 14.91   |  13.18   | 16.825  | 14.04   | 16.0017 | 15.972  | 14.4267 | nan      |  11.075 | 14.25  |
-| intentional attack    |  11.2942 | 11.5157 | 12.3824 |  11.6112 | 13.2767 | 12.4112 | 12.7337 | 10.9688 | 12.879  |  12.6629 |  13.13  | 10.82  |
-| islanding             | nan      | 13.695  | 13.4967 |  13.88   |  9.69   | 13.259  | 15.2125 | 11.2025 | 12.4733 |  14.84   |  15.29  | 14.54  |
-| public appeal         |  11.5    | 11.804  | 10.765  | nan      | 10.158  | 10.0731 | 11.1879 | 10.8156 | 10.61   |  13.195  | nan     | 11.055 |
+| CAUSE.CATEGORY        |         1 |         2 |          3 |        4 |         5 |        6 |        7 |         8 |        9 |       10 |      11 |        12 |
+|:----------------------|----------:|----------:|-----------:|---------:|----------:|---------:|---------:|----------:|---------:|---------:|--------:|----------:|
+| equipment failure     |   618.667 |   479.75  | 19851.5    |  370.429 |   386.167 |  270.333 |  305.083 |   288.667 | 332.75   | nan      | 503     |   838.25  |
+| fuel supply emergency | 31813.5   | 14435.6   | 17667.6    | 8468     | 18717     | 1890     | 5136     | 12410.8   | 865      | nan      | 758     | 15059     |
+| intentional attack    |   303.617 |   372.474 |   977.263  |  781.878 |   365.295 |  142.088 |  426.061 |   166.615 | 434.333  | 214.059  | 237.333 |   620.609 |
+| islanding             |   nan     |   359.5   |    51.6667 |  103.5   |   108.5   |  161     |  360.667 |   312.5   |  64.6667 |  13.3333 | 129     |   436     |
+| public appeal         |  2681.25  |  1041.4   |   945.5    |  nan     |  2635     |  970.812 |  810.357 |  1673.78  |  30      | 351      | nan     |  6293.5   |
 
 ---
 
