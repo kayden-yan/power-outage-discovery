@@ -4,7 +4,11 @@ by Jiaqing Yan(j6yan@ucsd.edu), Shiyuan Wang(shw088@ucsd.edu)
 ---
 
 ## Introduction
-This dataset encompasses information regarding significant power outages that occurred within the continental United States between January 2000 and July 2016, containing columns such as month, year, location, regional climate information, outage events, duration outage, electricity consumption, regional economic and land-use characteristics, etc. There are a few questions we might be interested in. Is it more likely to outage at night than morning? Are there any relationships between months and causes of the major power outages? Will it affect more and more customers as the outage lasts longer? Are there any relationships in the residential sector between monthly electricity prices and consumption? From these questions, the one we plan to investigate further is to find whether outages at night are more likely than morning.
+This dataset encompasses information regarding significant power outages that occurred within the continental United States between January 2000 and July 2016, containing columns such as month, year, location, regional climate information, outage events, duration outage, electricity consumption, regional economic and land-use characteristics, etc. The question we analyze is centered around how we identify patterns in power outages in order to better prevent them. The data presented is containing 55 variables.
+
+The dataset and our question have the potential to draw readers’ attention because we live in a world where people reply so much on electricity that power outage could bring great potential inconvenience to their daily life, and have an data-based insight on which time frame (morning or evening) in a day power outages tend to occur more frequently could potentially help them lessen the impact that power outages might bring to their life. 
+
+There are 1540 rows in the dataset, or 1535 valid rows if we exclude the 5 rows that contain information about the columns, such as names and units of the columnes. The columns relevant to our question is “OUTAGE.START.TIME” and “OUTAGE.START.DATE,” which represent the start time of the power outages in a day and the start date of the power outages, respectively. These two columns were later combined into one column for our use: “OUTAGE.START,” which contains the time and date of the stars of the power outages. 
 
 ---
 
@@ -12,7 +16,13 @@ This dataset encompasses information regarding significant power outages that oc
 
 ### Data Cleaning
 
-Combined 'OUTAGE.START.DATE' and 'OUTAGE.START.TIME' into a new pd.Timestamp column called 'OUTAGE.START'. 
+We took 3 major steps in cleaning the data.
+First step: We dropped the first 4 invalid rows, which contain information about columns instead of actual data. The 5th row contains the correct column names, so we set it as the names of columns in the data frame and then dropped this row.
+
+Second step: We combined “OUTAGE.START.TIME” and “OUTAGE.START.DATE” into a single column. We achieved this through zipping the two columns into a single pandas series and then applied our predefined lambda function on each entry of the series, converting each entry into a pandas timestamp object by calling the constructor of pd.Timestamp. Finally, we set this series as a new combined column named “OUTAGE.START,” and then dropped “OUTAGE.START.TIME” and “OUTAGE.START.DATE” columns. 
+
+Third step: Similar to the second step, we combined “OUTAGE.RESTORATION.TIME” and “OUTAGE.RESTORATION.DATE” into a single column. We achieved this through zipping the two columns into a single pandas series and then applied our predefined lambda function on each entry of the series. We set this series as a new combined column named “OUTAGE.RESTORATION,” and then dropped “OUTAGE.RESTORATION.TIME” and “OUTAGE.RESTORATION.DATE” columns. 
+
 
 | MONTH | POSTAL.CODE | CAUSE.CATEGORY     | OUTAGE.START        | OUTAGE.DURATION | CUSTOMERS.AFFECTED | RES.PRICE | RES.SALES |
 |------:|:------------|:-------------------|:--------------------|----------------:|-------------------:|----------:|----------:|
@@ -23,6 +33,8 @@ Combined 'OUTAGE.START.DATE' and 'OUTAGE.START.TIME' into a new pd.Timestamp col
 |     7 | MN          | severe weather     | 2015-07-18 02:00:00 |            1740 |             250000 |     13.07 |   2028875 |
 
 ### Univariate Analysis
+
+A univariate analysis we performed was on the reasons for power outages. We created a pie chart (plot 1) showing the distribution of the reasons for power outages, finding out the frequent reason is severe weather, which accounts for 49.7% of power outages.
 
 Plot 1: Here is the distribution of column CAUSE.CATEGORY. This pie chart shows the proportion of each events casuing the major power outages.
 
