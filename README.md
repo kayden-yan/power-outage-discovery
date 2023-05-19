@@ -88,6 +88,8 @@ Alternative Hypothesis: The power outage is more likely to happens in the mornin
 
 Our test statisic is difference between number of outages in the morning and number of outages in the evening.
 
+Categorize outage start time into AM/PM.
+
 |   OBS | OUTAGE.START        | is_am   |
 |------:|:--------------------|:--------|
 |     1 | 2011-07-01 17:00:00 | True    |
@@ -95,6 +97,8 @@ Our test statisic is difference between number of outages in the morning and num
 |     3 | 2010-10-26 20:00:00 | False   |
 |     4 | 2012-06-19 04:30:00 | False   |
 |     5 | 2015-07-18 02:00:00 | False   |
+
+Counts of how many outages started.
 
 | is_am   |   OUTAGE.START |
 |:--------|---------------:|
