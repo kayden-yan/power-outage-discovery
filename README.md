@@ -1,22 +1,26 @@
 # Power Outage Discovery
 by Jiaqing Yan(j6yan@ucsd.edu), Shiyuan Wang(shw088@ucsd.edu)
 
+---
+
 ## Introduction
 This dataset encompasses information regarding significant power outages that occurred within the continental United States between January 2000 and July 2016, containing columns such as month, year, location, regional climate information, outage events, duration outage, electricity consumption, regional economic and land-use characteristics, etc. There are a few questions we might be interested in. Is it more likely to outage at night than morning? Are there any relationships between months and causes of the major power outages? Will it affect more and more customers as the outage lasts longer? Are there any relationships in the residential sector between monthly electricity prices and consumption? From these questions, the one we plan to investigate further is to find whether outages at night are more likely than morning.
+
 ---
+
 ## Cleaning and EDA
 
 ### Data Cleaning
 
-Combined 'OUTAGE.START.DATE' and 'OUTAGE.START.TIME' into a new pd.Timestamp column called 'OUTAGE.START'. Also, combined 'OUTAGE.RESTORATION.DATE' and 'OUTAGE.RESTORATION.TIME' into a new pd.Timestamp column called 'OUTAGE.RESTORATION'.
+Combined 'OUTAGE.START.DATE' and 'OUTAGE.START.TIME' into a new pd.Timestamp column called 'OUTAGE.START'. 
 
-|   MONTH | POSTAL.CODE   | CAUSE.CATEGORY     | OUTAGE.START        | OUTAGE.RESTORATION   |   OUTAGE.DURATION |   CUSTOMERS.AFFECTED |   RES.PRICE |   RES.SALES |
-|--------:|:--------------|:-------------------|:--------------------|:---------------------|------------------:|---------------------:|------------:|------------:|
-|       7 | MN            | severe weather     | 2011-07-01 17:00:00 | 2011-07-03 20:00:00  |              3060 |                70000 |       11.6  |     2332915 |
-|       5 | MN            | intentional attack | 2014-05-11 18:38:00 | 2014-05-11 18:39:00  |                 1 |                  nan |       12.12 |     1586986 |
-|      10 | MN            | severe weather     | 2010-10-26 20:00:00 | 2010-10-28 22:00:00  |              3000 |                70000 |       10.87 |     1467293 |
-|       6 | MN            | severe weather     | 2012-06-19 04:30:00 | 2012-06-20 23:00:00  |              2550 |                68200 |       11.79 |     1851519 |
-|       7 | MN            | severe weather     | 2015-07-18 02:00:00 | 2015-07-19 07:00:00  |              1740 |               250000 |       13.07 |     2028875 |
+| MONTH | POSTAL.CODE | CAUSE.CATEGORY     | OUTAGE.START        | OUTAGE.DURATION | CUSTOMERS.AFFECTED | RES.PRICE | RES.SALES |
+|------:|:------------|:-------------------|:--------------------|----------------:|-------------------:|----------:|----------:|
+|     7 | MN          | severe weather     | 2011-07-01 17:00:00 |            3060 |              70000 |     11.6  |   2332915 |
+|     5 | MN          | intentional attack | 2014-05-11 18:38:00 |               1 |                nan |     12.12 |   1586986 |
+|    10 | MN          | severe weather     | 2010-10-26 20:00:00 |            3000 |              70000 |     10.87 |   1467293 |
+|     6 | MN          | severe weather     | 2012-06-19 04:30:00 |            2550 |              68200 |     11.79 |   1851519 |
+|     7 | MN          | severe weather     | 2015-07-18 02:00:00 |            1740 |             250000 |     13.07 |   2028875 |
 
 ### Univariate Analysis
 
@@ -51,6 +55,7 @@ This pivot table has the 'CAUSE.CATEGORY' as index, 'MONTH' as columns, performs
 | public appeal         |  11.5    | 11.804  | 10.765  | nan      | 10.158  | 10.0731 | 11.1879 | 10.8156 | 10.61   |  13.195  | nan     | 11.055 |
 
 ---
+
 ## Assessment of Missingness
 
 Permutation test: The missingness of CUSTOMERS.AFFECTED depends on OUTAGE.DURATION.
@@ -68,6 +73,7 @@ Alternative Hypothesis: The mean outage duration of missing CUSTOMERS.AFFECTED i
 We reject our null hypothesis at 0.01 level, this proves that the 'CUSTOMERS.AFFECTED' is NMAR and depends on 'OUTAGE.DURATION'
 
 ---
+
 ## Hypothesis Testing
 
 From our dataset, we want to learn whether it is easier to occur power outage in the evening than the morning. We separate Morning/Evening by 6 a.m.(inclusive) and 6 p.m.(exclusive).
