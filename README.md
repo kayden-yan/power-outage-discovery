@@ -1,7 +1,8 @@
-# power-outage-discovery
----
-## Introduction
+# Power Outage Discovery
+by Jiaqing Yan(j6yan@ucsd.edu), Shiyuan Wang(shw088@ucsd.edu)
 
+## Introduction
+This dataset encompasses information regarding significant power outages that occurred within the continental United States between January 2000 and July 2016, containing columns such as month, year, location, regional climate information, outage events, duration outage, electricity consumption, regional economic and land-use characteristics, etc. There are a few questions we might be interested in. Is it more likely to outage at night than morning? Are there any relationships between months and causes of the major power outages? Will it affect more and more customers as the outage lasts longer? Are there any relationships in the residential sector between monthly electricity prices and consumption? From these questions, the one we plan to investigate further is to find whether outages at night are more likely than morning.
 ---
 ## Cleaning and EDA
 
